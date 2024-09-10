@@ -9,4 +9,4 @@ Route::post('login', LoginController::class);
 Route::post('logout', LogoutController::class)->middleware('auth:sanctum');;
 Route::post('register', RegisterController::class);
 Route::post('password/email',[PasswordRestController::class,'sendResetLinkEmail'])->name('password.email');
-Route::post('password/reset',[PasswordRestController::class,'reset'])->name('password.reset');
+Route::get('password/reset',[PasswordRestController::class,'reset'])->middleware('signed')->name('password.reset');

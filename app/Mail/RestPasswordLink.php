@@ -12,13 +12,16 @@ use Illuminate\Queue\SerializesModels;
 class RestPasswordLink extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $url;
     /**
      * Create a new message instance.
      */
-    public function __construct()
+
+    public function __construct($url)
     {
         //
+        $this->url = $url;
+
     }
 
     /**
@@ -28,6 +31,7 @@ class RestPasswordLink extends Mailable
     {
         return new Envelope(
             subject: 'Rest Password Link',
+
         );
     }
 
@@ -38,6 +42,7 @@ class RestPasswordLink extends Mailable
     {
         return new Content(
             markdown: 'reset_password_link',
+
         );
     }
 
@@ -50,4 +55,5 @@ class RestPasswordLink extends Mailable
     {
         return [];
     }
+
 }
